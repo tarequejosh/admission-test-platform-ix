@@ -12,218 +12,6 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, User, FileText, CheckCircle, AlertTriangle, GraduationCap } from "lucide-react"
 import { useRouter } from "next/navigation"
 
-const allMockQuestions = [
-  // CSE Department Questions
-  {
-    id: 1,
-    subject: "Physics",
-    type: "mcq",
-    question: "What is the SI unit of force?",
-    options: ["Newton", "Joule", "Watt", "Pascal"],
-    correctAnswer: "Newton",
-    department: "CSE",
-    semester: "Fall 2024",
-  },
-  {
-    id: 2,
-    subject: "Mathematics",
-    type: "mcq",
-    question: "What is the derivative of x²?",
-    options: ["x", "2x", "x²", "2x²"],
-    correctAnswer: "2x",
-    department: "CSE",
-    semester: "Fall 2024",
-  },
-  {
-    id: 3,
-    subject: "Physics",
-    type: "fill",
-    question: "The formula for kinetic energy is KE = ½ × m × ______²",
-    correctAnswer: "v",
-    department: "CSE",
-    semester: "Fall 2024",
-  },
-  {
-    id: 4,
-    subject: "Mathematics",
-    type: "mcq",
-    question: "If x² = 25, what are the possible values of x?",
-    options: ["5 only", "-5 only", "5 and -5", "25 and -25"],
-    correctAnswer: "5 and -5",
-    department: "CSE",
-    semester: "Fall 2024",
-  },
-  {
-    id: 5,
-    subject: "English",
-    type: "mcq",
-    question: "Which of the following is a synonym for 'algorithm'?",
-    options: ["Process", "Method", "Procedure", "All of the above"],
-    correctAnswer: "All of the above",
-    department: "CSE",
-    semester: "Fall 2024",
-  },
-
-  // EEE Department Questions
-  {
-    id: 6,
-    subject: "Physics",
-    type: "mcq",
-    question: "The unit of electrical resistance is:",
-    options: ["Ampere", "Volt", "Ohm", "Watt"],
-    correctAnswer: "Ohm",
-    department: "EEE",
-    semester: "Fall 2024",
-  },
-  {
-    id: 7,
-    subject: "Mathematics",
-    type: "mcq",
-    question: "What is the value of sin(90°)?",
-    options: ["0", "1", "-1", "∞"],
-    correctAnswer: "1",
-    department: "EEE",
-    semester: "Fall 2024",
-  },
-  {
-    id: 8,
-    subject: "Physics",
-    type: "fill",
-    question: "Ohm's law states that V = I × ______",
-    correctAnswer: "R",
-    department: "EEE",
-    semester: "Fall 2024",
-  },
-
-  // Pharmacy Department Questions
-  {
-    id: 9,
-    subject: "Chemistry",
-    type: "mcq",
-    question: "What is the chemical symbol for Gold?",
-    options: ["Go", "Gd", "Au", "Ag"],
-    correctAnswer: "Au",
-    department: "Pharmacy",
-    semester: "Fall 2024",
-  },
-  {
-    id: 10,
-    subject: "Biology",
-    type: "fill",
-    question: "The powerhouse of the cell is called ______.",
-    correctAnswer: "mitochondria",
-    department: "Pharmacy",
-    semester: "Fall 2024",
-  },
-  {
-    id: 11,
-    subject: "Chemistry",
-    type: "mcq",
-    question: "The pH of pure water at 25°C is:",
-    options: ["6", "7", "8", "9"],
-    correctAnswer: "7",
-    department: "Pharmacy",
-    semester: "Fall 2024",
-  },
-
-  // BBA Department Questions
-  {
-    id: 12,
-    subject: "Mathematics",
-    type: "mcq",
-    question: "What is 15% of 200?",
-    options: ["25", "30", "35", "40"],
-    correctAnswer: "30",
-    department: "BBA",
-    semester: "Fall 2024",
-  },
-  {
-    id: 13,
-    subject: "English",
-    type: "mcq",
-    question: "Which word means 'to make something better'?",
-    options: ["Deteriorate", "Improve", "Worsen", "Decline"],
-    correctAnswer: "Improve",
-    department: "BBA",
-    semester: "Fall 2024",
-  },
-  {
-    id: 14,
-    subject: "General Knowledge",
-    type: "mcq",
-    question: "What does GDP stand for?",
-    options: [
-      "Gross Domestic Product",
-      "General Data Protection",
-      "Global Development Program",
-      "Government Debt Policy",
-    ],
-    correctAnswer: "Gross Domestic Product",
-    department: "BBA",
-    semester: "Fall 2024",
-  },
-
-  // General Questions for all departments
-  {
-    id: 15,
-    subject: "General Knowledge",
-    type: "mcq",
-    question: "What is the capital of Bangladesh?",
-    options: ["Chittagong", "Sylhet", "Dhaka", "Rajshahi"],
-    correctAnswer: "Dhaka",
-    department: "All",
-    semester: "Fall 2024",
-  },
-  {
-    id: 16,
-    subject: "General Knowledge",
-    type: "mcq",
-    question: "Who is known as the Father of the Nation of Bangladesh?",
-    options: ["Ziaur Rahman", "Sheikh Mujibur Rahman", "Hussain Muhammad Ershad", "Khaleda Zia"],
-    correctAnswer: "Sheikh Mujibur Rahman",
-    department: "All",
-    semester: "Fall 2024",
-  },
-  {
-    id: 17,
-    subject: "English",
-    type: "mcq",
-    question: "Identify the correct sentence:",
-    options: ["She don't like coffee", "She doesn't likes coffee", "She doesn't like coffee", "She not like coffee"],
-    correctAnswer: "She doesn't like coffee",
-    department: "All",
-    semester: "Fall 2024",
-  },
-  {
-    id: 18,
-    subject: "General Knowledge",
-    type: "fill",
-    question: "The longest river in Bangladesh is ______.",
-    correctAnswer: "Padma",
-    department: "All",
-    semester: "Fall 2024",
-  },
-  {
-    id: 19,
-    subject: "General Knowledge",
-    type: "mcq",
-    question: "In which year did Bangladesh gain independence?",
-    options: ["1970", "1971", "1972", "1973"],
-    correctAnswer: "1971",
-    department: "All",
-    semester: "Fall 2024",
-  },
-  {
-    id: 20,
-    subject: "English",
-    type: "fill",
-    question: "The past tense of 'go' is ______.",
-    correctAnswer: "went",
-    department: "All",
-    semester: "Fall 2024",
-  },
-]
-
 export default function StudentExamPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<Record<number, string>>({})
@@ -231,6 +19,7 @@ export default function StudentExamPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [studentInfo, setStudentInfo] = useState<any>(null)
   const [examQuestions, setExamQuestions] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
   const router = useRouter()
 
   useEffect(() => {
@@ -243,14 +32,42 @@ export default function StudentExamPage() {
     const student = JSON.parse(auth)
     setStudentInfo(student)
 
+    const storedQuestions = localStorage.getItem("questions")
+    let allQuestions = []
+
+    if (storedQuestions) {
+      allQuestions = JSON.parse(storedQuestions)
+    }
+
+    console.log("[v0] Student info:", student)
+    console.log("[v0] All stored questions:", allQuestions)
+
     // Filter questions for the student's department and semester
-    const departmentQuestions = allMockQuestions
-      .filter((q) => q.department === student.department || q.department === "All")
-      .filter((q) => q.semester === student.semester)
+    const departmentQuestions = allQuestions.filter((q: any) => {
+      const matchesDepartment = q.department === student.department || q.department === "All"
+      const matchesSemester = q.semester === student.semester
+      console.log(
+        "[v0] Question filter:",
+        q.department,
+        q.semester,
+        "Student:",
+        student.department,
+        student.semester,
+        "Matches:",
+        matchesDepartment && matchesSemester,
+      )
+      return matchesDepartment && matchesSemester
+    })
+
+    console.log("[v0] Filtered questions:", departmentQuestions)
 
     // Randomize and limit to 25 questions
     const shuffled = [...departmentQuestions].sort(() => Math.random() - 0.5)
-    setExamQuestions(shuffled.slice(0, Math.min(25, shuffled.length)))
+    const selectedQuestions = shuffled.slice(0, Math.min(25, shuffled.length))
+
+    console.log("[v0] Final exam questions:", selectedQuestions)
+    setExamQuestions(selectedQuestions)
+    setLoading(false)
   }, [router])
 
   useEffect(() => {
@@ -311,14 +128,19 @@ export default function StudentExamPage() {
       answers,
       questions: examQuestions,
     }
+
+    const existingResults = JSON.parse(localStorage.getItem("examResults") || "[]")
+    existingResults.push(result)
+    localStorage.setItem("examResults", JSON.stringify(existingResults))
     localStorage.setItem("examResult", JSON.stringify(result))
+
     router.push("/student/result")
   }
 
   const answeredQuestions = Object.keys(answers).length
   const progress = examQuestions.length > 0 ? (answeredQuestions / examQuestions.length) * 100 : 0
 
-  if (!studentInfo || examQuestions.length === 0) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <Card className="w-full max-w-md text-center">
@@ -326,6 +148,45 @@ export default function StudentExamPage() {
             <GraduationCap className="h-16 w-16 text-blue-500 mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-2">Loading Exam...</h2>
             <p className="text-gray-600">Preparing your personalized test</p>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  if (!studentInfo) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Card className="w-full max-w-md text-center">
+          <CardContent className="pt-6">
+            <AlertTriangle className="h-16 w-16 text-red-500 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold mb-2">Authentication Required</h2>
+            <p className="text-gray-600">Please log in to access the exam</p>
+            <Button onClick={() => router.push("/student/login")} className="mt-4">
+              Go to Login
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  if (examQuestions.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Card className="w-full max-w-md text-center">
+          <CardContent className="pt-6">
+            <FileText className="h-16 w-16 text-yellow-500 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold mb-2">No Questions Available</h2>
+            <p className="text-gray-600 mb-4">
+              No exam questions found for {studentInfo.department} - {studentInfo.semester}
+            </p>
+            <p className="text-sm text-gray-500 mb-4">
+              Please contact your administrator to set up questions for your department and semester.
+            </p>
+            <Button onClick={() => router.push("/student/login")} variant="outline">
+              Back to Login
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -493,7 +354,9 @@ export default function StudentExamPage() {
                         Submit Exam
                       </Button>
                     ) : (
-                      <Button onClick={handleNext}>Next Question</Button>
+                      <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700">
+                        Next Question
+                      </Button>
                     )}
                   </div>
                 </div>
